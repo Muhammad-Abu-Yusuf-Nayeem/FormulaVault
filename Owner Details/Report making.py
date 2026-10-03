@@ -34,3 +34,57 @@
   QUERY('impFromDraftIndividual'!C3:BG, "SELECT C, BC, BD, BE, BF, BG WHERE BC IS NOT NULL AND BG IS NOT NULL", 0),
   QUERY('impFromDraftIndividual'!C3:BL, "SELECT C, BH, BI, BJ, BK, BL WHERE BH IS NOT NULL AND BL IS NOT NULL", 0)
 )
+
+
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  REGEXMATCH('Source of truth'!$C$3:$C,"প্রবাসী")
+)),0)
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  REGEXMATCH('Source of truth'!$C$3:$C,"ওয়েষ্ট")
+)),0)
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  REGEXMATCH('Source of truth'!$C$3:$C,"ইউ এস")
+)),0)
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  REGEXMATCH('Source of truth'!$C$3:$C,"পুলিশ")
+)),0)
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  REGEXMATCH('Source of truth'!$C$3:$C,"পূর্বায়ন")
+)),0)
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  REGEXMATCH('Source of truth'!$C$3:$C,"এফ আই")
+)),0)
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  REGEXMATCH('Source of truth'!$C$3:$C,"ফ্যাশন")
+)),0)
+=IFERROR(SUM(FILTER(
+  'Source of truth'!$F$3:$F,
+  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
+  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+  NOT(REGEXMATCH(
+    'Source of truth'!$C$3:$C,
+    "প্রবাসী|ওয়েষ্ট|ইউ এস|পুলিশ|পূর্বায়ন|এফ আই|ফ্যাশন"
+  ))
+)),0)
+
