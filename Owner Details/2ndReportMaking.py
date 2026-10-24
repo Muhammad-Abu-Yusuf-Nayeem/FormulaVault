@@ -12,3 +12,15 @@
   "SELECT * WHERE Col6 IS NOT NULL",
   0
 )
+
+=BYROW(
+  IMPORTRANGE(
+    "https://docs.google.com/spreadsheets/d/1kRUvEOyo22Z2yWP2Akly7MnludaYobWqXBV5La1a0zw/edit?gid=147110446#gid=147110446",
+    "'Individual'!V6:AJ"
+  ),
+  LAMBDA(row,
+    IF(COUNTA(row)=0,"",
+      TEXTJOIN(" & ",TRUE,IF(row=0,"",row))
+    )
+  )
+)

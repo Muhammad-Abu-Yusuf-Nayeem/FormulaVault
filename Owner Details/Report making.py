@@ -78,13 +78,22 @@
   'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
   REGEXMATCH('Source of truth'!$C$3:$C,"ফ্যাশন")
 )),0)
-=IFERROR(SUM(FILTER(
-  'Source of truth'!$F$3:$F,
-  'Source of truth'!$A$3:$A>=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,1))),
-  'Source of truth'!$A$3:$A<=VALUE(TRIM(INDEX(SPLIT(B6,"-"),1,2))),
+=IFERROR(FILTER(
+  'Draft Hub'!$A$3:$F,
   NOT(REGEXMATCH(
-    'Source of truth'!$C$3:$C,
-    "প্রবাসী|ওয়েষ্ট|ইউ এস|পুলিশ|পূর্বায়ন|এফ আই|ফ্যাশন"
+    'Draft Hub'!$C$3:$C,
+    "প্রবাসী|ওয়েষ্ট|ইউ এস|পুলিশ|পূর্বায়ন|এফ.*আই|ফ্যাশন"
   ))
-)),0)
+),0)
 
+all US Bangla 10868.033 Decimal,	329.3343333 Bigha
+
+USB Analysis
+ইষ্ট ওয়েষ্ট Analysis
+পুলিশ Analysis
+পূর্বায়ন Analysis
+FICL Analysis
+Fokir fashon Analysis
+Individual Analysis
+
+sum if 'USB Analysis'!f3:f where g3:g= fill color light red 3
